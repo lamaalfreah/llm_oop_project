@@ -1,0 +1,2 @@
+class InvalidPromptError(Exception):
+    pass
