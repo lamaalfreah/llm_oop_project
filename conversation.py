@@ -1,4 +1,5 @@
 class Conversation:
+    """Represents a conversation between a user and a model."""
     def __init__(self, conversation_id, model):
         self.conversation_id = conversation_id
         self.model = model
@@ -23,5 +24,6 @@ class Conversation:
         return response
 
     def display_history(self):
+        """Display the full conversation history."""
         for message in self.messages:
             print(f"{message['role']}: {message['content']}")

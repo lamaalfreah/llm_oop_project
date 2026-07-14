@@ -1,0 +1,46 @@
+Project Questions
+
+1. What is the difference between a class and an object?
+A class is a blueprint, while an object is an instance created from that class.
+
+2. Why did we use LanguageModel as an abstract class?
+We used it to define common attributes and methods for all language models.
+
+3. What is the purpose of super()?
+It calls the parent class constructor or methods.
+
+4. What is the difference between inheritance and composition?
+Inheritance means one class gets features from another class. Composition means one class contains another object.
+
+5. What is the difference between composition and aggregation?
+In composition, the contained object depends on the main object. In aggregation, it can exist separately.
+
+6. Where does polymorphism appear in the project?
+It appears when GPTModel and LlamaModel use the same method name but return different responses.
+
+7. What is the difference between a class attribute and an instance attribute?
+A class attribute is shared by all objects, while an instance attribute belongs to one object.
+
+8. Why did we use @property?
+We used it to control access to private attributes safely.
+
+9. When should we use a static method?
+We use it when a method does not need self or cls.
+
+10. When should we use a class method?
+We use it when a method works with class-level data.
+
+11. Why did we override generate_response()?
+To make each model return its own type of response.
+
+12. What is the purpose of __str__ and __repr__?
+__str__ gives a readable description, while __repr__ gives a more detailed representation.
+
+13. Why did we create a custom exception?
+To handle invalid prompts with a clear and specific error.
+
+14. What problem does ModelManager solve?
+It organizes models and allows adding, removing, finding, listing, and selecting them.
+
+15. How could this project be connected to a real API later?
+We could replace the simulated response with an API request inside generate_response().
