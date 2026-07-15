@@ -77,6 +77,8 @@ def main():
     print(gpt.generate_response("What is Python?"))
     print(llama.generate_response("What is Python?"))
 
+
+    #Apply Polymorphism
     models = [gpt, llama]
     for model in models:
         print(model.generate_response("Explain OOP"))

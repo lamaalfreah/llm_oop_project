@@ -2,7 +2,7 @@ from tokenizer import Tokenizer
 from exceptions import InvalidPromptError
 class LanguageModel:
     """Represents a base simulated language model."""
-    total_models:int = 0
+    total_models:int = 0 #Class Attributes
     def __init__(self, model_name, provider, max_tokens, temperature, pricing_plan, is_active= True):
         self.model_name = model_name
         self.provider = provider
@@ -14,7 +14,7 @@ class LanguageModel:
         self.__is_active = is_active
 
     def validate_prompt(self, prompt):
-        """Represents a base simulated language model."""
+        """Validate that the prompt is a non-empty string."""
         if not isinstance(prompt, str):
             raise InvalidPromptError("Prompt must be a string.")
 
@@ -32,13 +32,14 @@ class LanguageModel:
 
     @classmethod
     def get_total_models(cls):
-        """Return formatted model information."""
+        """Return the total number of created models."""
         return cls.total_models
     
     @staticmethod
     def validate_temperature(temperature):
         return 0.0 <= temperature <= 2.0
     
+    #Encapsulation
     @property
     def temperature(self):
         """Return the model temperature."""
@@ -60,19 +61,19 @@ class LanguageModel:
         print(f"Estimated Cost: ${cost:.6f}")
     
     def __str__(self):
-        """Calculate and display the request cost."""
+        """Return a user-friendly model representation."""
         return f"{self.model_name} by {self.provider}"
-    
+            
     def __repr__(self):
         """Return a developer-friendly representation."""
         return f"model_name={self.model_name}, provider={self.provider})"
 
     def __len__(self):
-        """Return a developer-friendly representation."""
+        """Return the maximum token capacity."""
         return self.max_tokens
 
     def __eq__(self, other):
-        """Return the maximum token capacity."""
+        """Compare two language models."""
         return (self.model_name == other.model_name and 
                 self.provider == other.provider)
 
@@ -92,16 +93,18 @@ class LanguageModel:
 class LoggingMixin:
     def log(self, message):
         print(f"[LOG]: {message}")
-        
+
 class GPTModel(LanguageModel, LoggingMixin):
-    """Compare two language models."""
+    """Represents a simulated GPT model."""
     def __init__(self, model_name, provider, max_tokens, temperature, api_key, pricing_plan, is_active=True):
         super().__init__(model_name, provider, max_tokens, temperature, pricing_plan, is_active)
         self.api_key = api_key
 
+    #Method Overriding
     def generate_response(self, prompt):
         self.validate_prompt(prompt)
         LoggingMixin.log(self, "Sending request to GPT-Model")
+        #Composition
         return f"GPT API response to: '{prompt}\nInput tokens: {self.tokenizer.count_tokens(prompt)}'"
     
 class LlamaModel(LanguageModel):
@@ -112,7 +115,7 @@ class LlamaModel(LanguageModel):
         self.quantization = quantization
 
     def generate_response(self, prompt):
-        """Represents a local Llama model."""
+        """Return the simulated Llama response ."""
         self.validate_prompt(prompt)
         return f"Local Llama response to: '{prompt}\nInput tokens: {self.tokenizer.count_tokens(prompt)}'"
 

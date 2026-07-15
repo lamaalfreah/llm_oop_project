@@ -4,16 +4,13 @@ class Tokenizer:
         pass
         
     def count_tokens(self, text):
-        """Split text into tokens using whitespace.
+        """Count the number of tokens in a text.
 
         Args:
-            text: The text to tokenize.
+            text: The text whose tokens will be counted.
 
         Returns:
-            A list containing the text tokens.
-
-        Raises:
-            TypeError: If text is not a string.
+            The number of tokens.
         """
         return len(self.tokenize(text))
     
